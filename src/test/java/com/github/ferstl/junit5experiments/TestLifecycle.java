@@ -21,69 +21,69 @@ class TestLifecycle {
 
   @BeforeAll
   static void beforeAll() {
-    System.out.println("withinBeforeAll");
+    System.out.println("within @BeforeAll");
   }
 
   @AfterAll
   static void afterAll() {
-    System.out.println("withinAfterAll");
+    System.out.println("within @AfterAll");
   }
 
   @BeforeEach
   void beforeEach() {
-    System.out.println("within beforeEeach");
+    System.out.println("    within @BeforeEach");
   }
 
   @AfterEach
   void afterEach() {
-    System.out.println("within afterEach");
+    System.out.println("    within @AfterEach");
   }
 
   @Test
   void test1() {
-    System.out.println("within test 1");
+    System.out.println("      within test 1");
   }
 
   @Test
   void test2() {
-    System.out.println("within test 2");
+    System.out.println("      within test 2");
   }
 
   static class TestExtension implements BeforeAllCallback, AfterAllCallback, BeforeEachCallback, AfterEachCallback, BeforeTestExecutionCallback, AfterTestExecutionCallback, TestInstancePostProcessor {
 
     @Override
     public void afterAll(ExtensionContext context) {
-      System.out.println("withinAfterAllCallback");
+      System.out.println("within afterAll() callback");
     }
 
     @Override
     public void afterEach(ExtensionContext context) {
-      System.out.println("withinAfterEachCallback");
+      System.out.println("    within afterEach() Callback");
     }
 
     @Override
     public void afterTestExecution(ExtensionContext context) {
-      System.out.println("withinAfterTestExecutionCallback");
+      System.out.println("      within afterTestExecution() callback");
     }
 
     @Override
     public void beforeAll(ExtensionContext context) {
-      System.out.println("withinBeforeAllCallback");
+      System.out.println("within beforeAll() callback");
     }
 
     @Override
     public void beforeEach(ExtensionContext context) {
-      System.out.println("withinBeforeEachCallback");
+      System.out.println("    within beforeEach() callback");
     }
 
     @Override
     public void beforeTestExecution(ExtensionContext context) {
-      System.out.println("withinBeforeTestExecutionCallback");
+      System.out.println("      within beforeTestExecution() callback");
     }
 
     @Override
     public void postProcessTestInstance(Object testInstance, ExtensionContext context) throws Exception {
-      System.out.println("within postProcessTestInstance");
+      System.out.println("    within postProcessTestInstance() callback");
     }
   }
 }
